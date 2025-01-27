@@ -26,7 +26,7 @@ public class SpinnyTime : MonoBehaviour
         //checking if my mouse is held down while over crazy face character
         if (Input.GetMouseButton(0) && mousePosition.x > 415 && mousePosition.x < 575 && mousePosition.y > 235 && mousePosition.y < 425)
         {
-            rotationSpeed += 0.25f;
+            rotationSpeed += 0.6f;
         }
         else {
             rotationSpeed -= 0.1f;

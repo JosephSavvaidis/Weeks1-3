@@ -12,6 +12,9 @@ public class LerpingHead : MonoBehaviour
 
     // A variable that checks whether i want t to increase or decrease
     private bool getBigger;
+
+    public float scaleOffset;
+    public float range;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,19 +30,19 @@ public class LerpingHead : MonoBehaviour
 
         if (getBigger == true)
         {
-            t += 0.001f;
+            t += 0.005f;
         }
         else if (getBigger == false) {
-            t -= 0.001f;
+            t -= 0.005f;
         }
             
             if (t > 1f)
             {
             getBigger = false;
-            }if (t < 0.5f) {
+            }if (t < 0f) {
             getBigger = true;
             }
         
-        transform.localScale = Vector2.one * curve.Evaluate(t) * 0.3f;
+        transform.localScale = Vector2.one * (curve.Evaluate(t) * range + scaleOffset);
     }
 }

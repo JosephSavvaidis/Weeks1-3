@@ -23,7 +23,7 @@ public class ClickBogus : MonoBehaviour
         {
             //Debug.Log("Mouse was pressed on the LEFT side of the screen");
             // make bogus character get big and small rapidly
-            t += 0.001f;
+            t += 0.005f;
             if (t > 0.35f)
             {
                 t = 0.3f;
