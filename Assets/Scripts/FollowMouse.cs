@@ -13,7 +13,9 @@ public class FollowMouse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         Vector2 squarePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         this.transform.position = squarePosition;
+
     }
 }
