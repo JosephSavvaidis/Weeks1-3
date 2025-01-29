@@ -42,7 +42,7 @@ public class LerpingHead : MonoBehaviour
             }if (t < 0f) {
             getBigger = true;
             }
-        
+        //setting
         transform.localScale = Vector2.one * (curve.Evaluate(t) * range + scaleOffset);
     }
 }
