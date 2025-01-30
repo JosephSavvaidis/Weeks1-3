@@ -32,8 +32,7 @@ public class LerpLeftToRight : MonoBehaviour
         // Normalize that PingPong value to [0 to 1]
         float t = pingPongValue / moveDuration;
 
-        // SmoothStep creates an "ease in/out" effect,
-        // slowing near 0 and 1, speeding up in the middle
+        // SmoothStep creates an easin effect, slowing near 0, and 1 speeding up in the middle
         float easedT = Mathf.SmoothStep(0f, 1f, t);
 
         // Lerp the objects X position between the two boundaries
