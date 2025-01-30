@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Device;
 
 public class SpinnyTime : MonoBehaviour
-{
+{//finished
     //stores the current Z-axis rotation of the object
     private float rotationZ;
     //control spped of rotation
