@@ -5,48 +5,59 @@ using UnityEngine;
 
 public class FlashLightFollowMouse : MonoBehaviour
 {
-    //getting the sprite renderer of the flash
-    public SpriteRenderer rend1;
-    public SpriteRenderer rend2;
-    public SpriteRenderer rend3;
-    //variable to check if light is on
+    // gameobject for flash
+    public GameObject flash;
+
+    
+    
+
+    // A variable to track whether the flashlight is on
     private bool lightOn;
+
     // Start is called before the first frame update
     void Start()
     {
-        // Initially set the flashlight to off
+        // Initially, the flashlight is off
         lightOn = false;
+
+        
+        
     }
 
     // Update is called once per frame
     void Update()
-    {   
-        //setting flashlight cast to mouse position
-        Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = mouse;
+    {
+        // Convert mouse screen position to a position in the world
+        Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        // Check if the left mouse button was pressed this frame
-        // If pressed, turn the flashlight on.
+        // Move this parent object to follow the mouse
+        transform.position = mouseWorldPos;
+
+        // Turn the flashlight on if the left mouse button is pressed
         if (Input.GetMouseButtonDown(0))
         {
             lightOn = true;
-
         }
-        // If the left mouse button is released, turn the flashlight off.
-        else if (Input.GetMouseButtonUp(0)) {
+        // Turn it off if the left mouse button is released
+        else if (Input.GetMouseButtonUp(0))
+        {
             lightOn = false;
         }
-        if (lightOn == true) {
-            //enabling all flashlight renderers
-            rend1.enabled = true;
-            rend2.enabled = true;
-            rend3.enabled = true;
-        }else if ((lightOn == false))
+
+        // If flashlight is on, place sprites at their original local positions.
+        // If off, teleport them far off-screen.
+        if (lightOn)
         {
-            //disabling all flashlight renderers
-            rend1.enabled = false;
-            rend2.enabled = false;
-            rend3.enabled = false;  
+            flash.transform.localPosition = mouseWorldPos;
+            
+        }
+        else
+        {
+            //  move them to a very large coordinate
+            Vector3 offScreenPos = new Vector3(9999f, 9999f, 0f);
+
+            flash.transform.localPosition = offScreenPos;
+            
         }
     }
 }
