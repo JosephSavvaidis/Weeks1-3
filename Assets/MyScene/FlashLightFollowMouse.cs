@@ -14,6 +14,7 @@ public class FlashLightFollowMouse : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Initially set the flashlight to off
         lightOn = false;
     }
 
@@ -24,22 +25,25 @@ public class FlashLightFollowMouse : MonoBehaviour
         Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = mouse;
 
+        // Check if the left mouse button was pressed this frame
+        // If pressed, turn the flashlight on.
         if (Input.GetMouseButtonDown(0))
         {
             lightOn = true;
 
         }
+        // If the left mouse button is released, turn the flashlight off.
         else if (Input.GetMouseButtonUp(0)) {
             lightOn = false;
         }
         if (lightOn == true) {
-            //disbaling all flashlight renderers
+            //enabling all flashlight renderers
             rend1.enabled = true;
             rend2.enabled = true;
             rend3.enabled = true;
         }else if ((lightOn == false))
         {
-            //enabling all flashlight renderers
+            //disabling all flashlight renderers
             rend1.enabled = false;
             rend2.enabled = false;
             rend3.enabled = false;  
